@@ -59,20 +59,22 @@ function App() {
       {/* Exibição das Fotos */}
       <div className="photo-grid">
         {loading ? (
-          <p>Carregando...</p>
-        ) : (
+          <p className="loading">Carregando...</p> // Centraliza a mensagem "Carregando..."
+        ) : photos.length > 0 ? (
           photos.map((photo) => (
             <div key={photo.id} className="photo-item">
               <img src={photo.src.medium} alt={photo.alt} />
               <p>{photo.alt}</p>
             </div>
           ))
-        )}
+        ) : searchTerm ? (
+          <p className="no-photos">Nenhuma foto encontrada.</p> // Exibe a mensagem caso não encontre fotos
+        ) : null}
       </div>
 
       {/* Rodapé */}
       <footer>
-        <p>© 2024 Galeria de Fotos. Todos os direitos reservados.</p>
+        <p>© 2025 Galeria de Fotos. Todos os direitos reservados.</p>
       </footer>
     </div>
   );
