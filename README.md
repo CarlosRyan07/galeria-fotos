@@ -23,7 +23,7 @@ Você pode acessar a aplicação hospedada [aqui](https://galeria-fotos-neon.ver
 - **Responsividade**: A aplicação é responsiva e se adapta a diferentes tamanhos de tela.
 - **Modo Claro e Escuro**: Altere entre os modos claro e escuro para uma experiência personalizada.
 
-![Demonstração do Modo Claro e Escuro](.src/assets/modoNoturno.gif)
+    ![Demonstração do Modo Claro e Escuro](src/assets/modoNoturno.gif)
 
 
 ## Como Rodar o Projeto Localmente
