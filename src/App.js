@@ -7,6 +7,7 @@ function App() {
   const [photos, setPhotos] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false); // Estado para controlar o tema
 
   // A chave da API Pexels (substitua pela sua chave)
   const apiKey = 'xbR0ZuzLjGxjwZkI10qo2bWTrWgs3JMOm9slKpCvOcEcoxIiVZ6cHazF'; // Substitua com sua chave da Pexels
@@ -40,13 +41,27 @@ function App() {
     }
   }, [searchTerm]);
 
+  // Alternar o tema (escuro/claro)
+  const toggleTheme = () => {
+    setIsDarkMode((prevMode) => !prevMode);
+  };
+
+  // Atualizar a classe do body
+  useEffect(() => {
+    if (isDarkMode) {
+      document.body.classList.add('dark');
+    } else {
+      document.body.classList.remove('dark');
+    }
+  }, [isDarkMode]);
+
   return (
     <div className="App">
       <header>
         <h1>Galeria de Fotos</h1>
       </header>
 
-      {/* Barra de Pesquisa */}
+      {/* Barra de Pesquisa e Botão de Alternância de Tema */}
       <div className="search-bar">
         <input
           type="text"
@@ -54,12 +69,15 @@ function App() {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)} // Atualiza a palavra-chave
         />
+        <button className="theme-toggle" onClick={toggleTheme}>
+        {isDarkMode ? '🌙' : '☀️'}
+        </button>
       </div>
 
-      {/* Exibição das Fotos */}
+      {/* Exibição das Fotos ou Imagem de Busca Vazia */}
       <div className="photo-grid">
         {loading ? (
-          <p className="loading">Carregando...</p> // Centraliza a mensagem "Carregando..."
+          <p className="loading">Carregando...</p>
         ) : photos.length > 0 ? (
           photos.map((photo) => (
             <div key={photo.id} className="photo-item">
@@ -68,13 +86,17 @@ function App() {
             </div>
           ))
         ) : searchTerm ? (
-          <p className="no-photos">Nenhuma foto encontrada.</p> // Exibe a mensagem caso não encontre fotos
-        ) : null}
+          <p className="no-photos">Nenhuma foto encontrada.</p>
+        ) : (
+          <div className="no-search">
+            <img src="./assets/lupa.jpg" alt="" />
+          </div>
+        )}
       </div>
 
       {/* Rodapé */}
       <footer>
-        <p>© 2025 Galeria de Fotos. Todos os direitos reservados.</p>
+        <p>© 2024 Galeria de Fotos. Todos os direitos reservados.</p>
       </footer>
     </div>
   );
