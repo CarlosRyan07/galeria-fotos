@@ -38,22 +38,11 @@ h1 {
   background-color: #fff;
   color: #333;
 }
-.no-search {
-  background-image: url('./assets/lupa.png');
-  background-size: contain; 
-  background-repeat: no-repeat;
-  background-position: center; 
-  height: 300px; 
-  width: 520%; 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
+
 .theme-toggle {
-  position: absolute; 
-  top: 120px; /* Ajuste a distância da parte superior, se necessário */
-  right: 20px; /* Fixa o botão no canto direito */
+  position: absolute;
+  top: 120px;
+  right: 20px;
   padding: 10px;
   border: none;
   background-color: #007bff;
@@ -100,6 +89,16 @@ h1 {
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 1.2rem;
+  color: #555;
+  text-align: center;
+}
+
+.no-search-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
   color: #555;
   text-align: center;
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import './App.css';
 
@@ -10,10 +10,10 @@ function App() {
   const [isDarkMode, setIsDarkMode] = useState(false); // Estado para controlar o tema
 
   // A chave da API Pexels (substitua pela sua chave)
-  const apiKey = 'xbR0ZuzLjGxjwZkI10qo2bWTrWgs3JMOm9slKpCvOcEcoxIiVZ6cHazF'; // Substitua com sua chave da Pexels
+  const apiKey = process.env.REACT_APP_PEXELS_API_KEY; // Substitua com sua chave da Pexels
 
-  // Função para buscar fotos do Pexels
-  const fetchPhotos = async (query) => {
+  // Função para buscar fotos do Pexels, memorizada com useCallback
+  const fetchPhotos = useCallback(async (query) => {
     setLoading(true);
     try {
       const response = await axios.get('https://api.pexels.com/v1/search', {
@@ -30,7 +30,7 @@ function App() {
       console.error('Erro ao buscar as fotos:', error);
     }
     setLoading(false);
-  };
+  }, [apiKey]); // Dependência de apiKey
 
   // Executar a busca sempre que a palavra-chave mudar
   useEffect(() => {
@@ -39,7 +39,7 @@ function App() {
     } else {
       setPhotos([]);
     }
-  }, [searchTerm]);
+  }, [searchTerm, fetchPhotos]); // Adicionando 'fetchPhotos' nas dependências
 
   // Alternar o tema (escuro/claro)
   const toggleTheme = () => {
@@ -70,7 +70,7 @@ function App() {
           onChange={(e) => setSearchTerm(e.target.value)} // Atualiza a palavra-chave
         />
         <button className="theme-toggle" onClick={toggleTheme}>
-        {isDarkMode ? '🌙' : '☀️'}
+          {isDarkMode ? '🌙' : '☀️'}
         </button>
       </div>
 
@@ -88,9 +88,7 @@ function App() {
         ) : searchTerm ? (
           <p className="no-photos">Nenhuma foto encontrada.</p>
         ) : (
-          <div className="no-search">
-            <img src="./assets/lupa.jpg" alt="" />
-          </div>
+          <p className="no-search-message">Digite algo para começar a buscar!</p>
         )}
       </div>
 
