@@ -3,16 +3,14 @@ import axios from 'axios';
 import './App.css';
 
 function App() {
-  // Estados para armazenar as imagens e a palavra-chave da busca
   const [photos, setPhotos] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false); // Estado para controlar o tema
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
-  // A chave da API Pexels (substitua pela sua chave)
-  const apiKey = process.env.REACT_APP_PEXELS_API_KEY; // Substitua com sua chave da Pexels
+  const apiKey = process.env.REACT_APP_PEXELS_API_KEY;
 
-  // Função para buscar fotos do Pexels, memorizada com useCallback
+  // Função memoizada com useCallback
   const fetchPhotos = useCallback(async (query) => {
     setLoading(true);
     try {
@@ -22,31 +20,32 @@ function App() {
         },
         params: {
           query: query,
-          per_page: 10, // Quantidade de fotos que você quer mostrar
+          per_page: 10,
         },
       });
-      setPhotos(response.data.photos); // Atualiza o estado com as fotos
+      setPhotos(response.data.photos);
     } catch (error) {
       console.error('Erro ao buscar as fotos:', error);
     }
     setLoading(false);
-  }, [apiKey]); // Dependência de apiKey
+  }, [apiKey]);  // Dependência de apiKey, para que a função seja atualizada caso a chave mude
 
-  // Executar a busca sempre que a palavra-chave mudar
   useEffect(() => {
     if (searchTerm) {
       fetchPhotos(searchTerm);
     } else {
       setPhotos([]);
     }
-  }, [searchTerm, fetchPhotos]); // Adicionando 'fetchPhotos' nas dependências
+  }, [searchTerm, fetchPhotos]);  // Agora fetchPhotos está memoizado e pode ser usado sem problema
 
-  // Alternar o tema (escuro/claro)
+  useEffect(() => {
+    document.title = "Galeria de Fotos";
+  }, []);
+
   const toggleTheme = () => {
     setIsDarkMode((prevMode) => !prevMode);
   };
 
-  // Atualizar a classe do body
   useEffect(() => {
     if (isDarkMode) {
       document.body.classList.add('dark');
@@ -61,20 +60,18 @@ function App() {
         <h1>Galeria de Fotos</h1>
       </header>
 
-      {/* Barra de Pesquisa e Botão de Alternância de Tema */}
       <div className="search-bar">
         <input
           type="text"
           placeholder="Pesquise por fotos..."
           value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)} // Atualiza a palavra-chave
+          onChange={(e) => setSearchTerm(e.target.value)}
         />
         <button className="theme-toggle" onClick={toggleTheme}>
           {isDarkMode ? '🌙' : '☀️'}
         </button>
       </div>
 
-      {/* Exibição das Fotos ou Imagem de Busca Vazia */}
       <div className="photo-grid">
         {loading ? (
           <p className="loading">Carregando...</p>
@@ -92,7 +89,6 @@ function App() {
         )}
       </div>
 
-      {/* Rodapé */}
       <footer>
         <p>© 2024 Galeria de Fotos. Todos os direitos reservados.</p>
       </footer>

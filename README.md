@@ -1,70 +1,90 @@
-# Getting Started with Create React App
+# Galeria de Fotos
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este projeto foi feito apartir de um Desafio de fazer uma aplicação web que permite buscar, visualizar e filtrar imagens da API Pexels. 
 
-## Available Scripts
+Extra: A aplicação também oferece a funcionalidade de alternar entre o modo claro e o modo escuro.
 
-In the project directory, you can run:
+## Link da Aplicação
 
-### `npm start`
+Você pode acessar a aplicação hospedada [aqui](https://galeria-fotos-neon.vercel.app/).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Tecnologias Utilizadas
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- React
+- Axios
+- API Pexels
+- CSS para estilização
+- Vercel para hospedagem
 
-### `npm test`
+## Funcionalidades
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Busca de Imagens**: Pesquise por fotos usando palavras-chave.
+- **Exibição de Resultados**: As imagens são exibidas em uma galeria com suporte para exibição de erros ou mensagens de carregamento.
+- **Responsividade**: A aplicação é responsiva e se adapta a diferentes tamanhos de tela.
+- **Modo Claro e Escuro**: Altere entre os modos claro e escuro para uma experiência personalizada.
 
-### `npm run build`
+![Demonstração do Modo Claro e Escuro](.src/assets/modoNoturno.gif)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Como Rodar o Projeto Localmente
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Requisitos
 
-### `npm run eject`
+- Node.js (recomendado a versão 14.x ou superior)
+- npm ou yarn
+- Criar uma conta no [Pexels](https://www.pexels.com/), pois será necessário gerar uma chave de API
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Passos
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Clone o repositório:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   ```bash
+   git clone hhttps://github.com/CarlosRyan07/galeria-fotos.git
+    ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+2. Navegue até o diretório do projeto:
 
-## Learn More
+   ```bash
+   cd galeria-de-fotos
+    ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3. Instale as dependências:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+   ```bash
+   npm install
+    ```
 
-### Code Splitting
+    ou
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+    ```bash
+   yarn
+    ```
 
-### Analyzing the Bundle Size
+4. Crie um arquivo `.env` na raiz do projeto e adicione a chave da API Pexels:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+    ```env
+    REACT_APP_PEXELS_API_KEY=sua-chave-aqui
+     ```
 
-### Making a Progressive Web App
+5. Inicie o servidor de desenvolvimento:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+    ```bash
+    npm start
+     ```
 
-### Advanced Configuration
+    ou
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+    ```bash
+    yarn start
+     ```
 
-### Deployment
+6. Acesse a aplicação em `http://localhost:3000`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 💻 Como Fiz o Deploy para a Vercel
 
-### `npm run build` fails to minify
+1. Acesse o site da Vercel e faça login (ou crie uma conta, se ainda não tiver).
+2. No painel da Vercel, clique em "New Project".
+3. Conecte o repositório do GitHub onde o projeto está hospedado.
+4. Após a conexão, a Vercel automaticamente irá detectar que o projeto é uma aplicação React e configurará as variáveis de ambiente.
+5. Clique em Deploy. Após alguns minutos, o deploy será concluído e você receberá o link da aplicação hospedada.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
