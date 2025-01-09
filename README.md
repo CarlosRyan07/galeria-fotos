@@ -1,10 +1,12 @@
 # Galeria de Fotos
 
-Este projeto foi feito apartir de um Desafio de fazer uma aplicação web que permite buscar, visualizar e filtrar imagens da API Pexels. 
+Este projeto foi feito apartir de um Desafio de fazer uma aplicação web que permite buscar, visualizar e filtrar imagens da API Pexels.
 
 Extra: A aplicação também oferece a funcionalidade de alternar entre o modo claro e o modo escuro.
 
 ## Link da Aplicação
+
+Para facilitar o acesso a aplicação, fiz o deploy da aplicação na Vercel.
 
 Você pode acessar a aplicação hospedada [aqui](https://galeria-fotos-neon.vercel.app/).
 
@@ -24,7 +26,6 @@ Você pode acessar a aplicação hospedada [aqui](https://galeria-fotos-neon.ver
 - **Modo Claro e Escuro**: Altere entre os modos claro e escuro para uma experiência personalizada.
 
     ![Demonstração do Modo Claro e Escuro](src/assets/modoNoturno.gif)
-
 
 ## Como Rodar o Projeto Localmente
 
@@ -87,4 +88,3 @@ Você pode acessar a aplicação hospedada [aqui](https://galeria-fotos-neon.ver
 3. Conecte o repositório do GitHub onde o projeto está hospedado.
 4. Após a conexão, a Vercel automaticamente irá detectar que o projeto é uma aplicação React e configurará as variáveis de ambiente.
 5. Clique em Deploy. Após alguns minutos, o deploy será concluído e você receberá o link da aplicação hospedada.
-
